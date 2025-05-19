@@ -1,77 +1,21 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using Microsoft.VisualBasic;
+﻿using DesafioPOO.Models;
+namespace DesafioPOO
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Iniciando smartphone Nokia");
+            var n1 = new Nokia("61984535689", "PHE2356", "SHJ9595PJ", 64);
+            n1.Ligar();
+            n1.InstalarAplicativo("Telegram");
 
-namespace TextEditor{
-
-class Program{
-
-    public static void Main(string[] args){
-        Menu();
-
-    }
-
-    static void Menu(){
-        Console.WriteLine("Select an option: ");
-        Console.WriteLine("1 - Open file");
-        Console.WriteLine("2 - Create file");
-        Console.WriteLine("0 - Exit ");
-
-        short option = short.Parse(Console.ReadLine());
-
-        switch(option){
-            
-            case 0: System.Environment.Exit(0);
-            break;
-
-            case 1: Open();
-            break;
-
-            case 2: Create();
-            break;
-
-            default: Menu();
-            break;
-        }
-    }
-
-    static void Open(){
-
-    }
-
-    static void Create(){
-        Console.Clear();
-        Console.WriteLine("Type your text below: ");
-        Console.WriteLine("Press ESC to Exit");
-        Console.WriteLine("---------------------");
-
-        string text = "";
-
-        do{
-            text += Console.ReadLine();
-            text += Environment.NewLine;
+            Console.WriteLine("Iniciando smartphone Iphone");
+            var ip1 = new Iphone("61984515256", "PHE5658", "XPJ8545SE", 128);
+            ip1.ReceberLigacao();
+            ip1.InstalarAplicativo("WhatsApp");
 
         }
-        
-        while (Console.ReadKey().Key != ConsoleKey.Escape);
-
-        Console.Write(text);
-
-        Save(text);
-    }
-
-    static void Save(string text){
-        Console.Clear();
-        Console.WriteLine("Where is the directory's destiny to save?");
-        var path = Console.ReadLine();
-
-        using(var file = new StreamWriter(path)){
-            file.Write(text);
-        }
-
-        Console.WriteLine("The file is saved!{0}",path);
-        Menu();
-
     }
 }
-}
+
